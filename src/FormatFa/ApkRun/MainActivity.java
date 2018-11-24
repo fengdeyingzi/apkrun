@@ -16,14 +16,19 @@ import java.util.*;
 import android.widget.AdapterView.*;
 import android.text.*;
 import FormatFa.ApkRun.Adapter.*;
+import FormatFa.ApkRun.tool.*;
+import com.github.dfqin.grantor.*;
 
 public class MainActivity extends Activity
 {
 	
 	private Button sd,start,startWithActivity,search,choosePath  ,searchtitle;
+	private Button btn_package;
 	private FileChoose fc;
 	private TextView apkname;
 	private ImageView apkicon;
+	boolean isStart;
+	static boolean isStop;
 	Context c;
 	
 	PluginManager plugMgr;
@@ -42,6 +47,9 @@ public class MainActivity extends Activity
 	PluginAdapter adapter;
 	ListView searchResult;
 	EditText searchpath;
+	CheckBox check;
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -53,10 +61,30 @@ public class MainActivity extends Activity
 		apkname=(TextView)findViewById(R.id.main_name);
 		start=(Button)findViewById(R.id.main_start);
 	
+		
 		search=(Button)findViewById(R.id.main_search);
 		choosePath=(Button)findViewById(R.id.main_choosepath);
 		
-		
+		btn_package = (Button) findViewById(R.id.btn_package);
+		btn_package.setOnClickListener(new View.OnClickListener(){
+
+				@Override
+				public void onClick(View p1)
+				{
+					// TODO: Implement this method
+					Toast.makeText(p1.getContext(), "直接启动",0).show();
+					if(fc!=null)
+					AppTool.installApk(p1.getContext(), fc.getPath());
+					else{
+						Intent intent = getIntent();
+						if(intent.getData()!=null){
+							AppTool.installApk(p1.getContext(), intent.getData().getPath());
+						}
+					}
+				}
+				
+			
+		});
 		
 		searchResult=(ListView)findViewById(R.id.main_searchresult);
 		searchpath=(EditText)findViewById(R.id.main_searchpath);
@@ -67,6 +95,22 @@ public class MainActivity extends Activity
 		bottomLinear=(LinearLayout)findViewById(R.id.mainLinearLayout2);
 		startWithActivity=(Button)findViewById(R.id.main_startwithactivity);
 		apkicon=(ImageView)findViewById(R.id.main_icon);
+		
+		 check = (CheckBox) findViewById(R.id.isStart);
+		SharedPreferencesUtil prefer = new SharedPreferencesUtil(this);
+		check.setChecked(prefer.getBoolean("isStart", false));
+		check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
+				@Override
+				public void onCheckedChanged(CompoundButton p1, boolean p2)
+				{
+					// TODO: Implement this method
+					isStart = p2;
+				}
+				
+			
+		});
+		isStart = check.isChecked();
 		c=this;
 //		
 //	
@@ -172,8 +216,11 @@ public class MainActivity extends Activity
 		
 			Uri u=	i.getData();
 		
-			if(u!=null)
+			if(u!=null){
+			
 			loadApk(u.getPath());
+			Toast.makeText(this,"加载apk",0).show();
+			}
 			
 			
 		searchResult.setOnItemClickListener(new OnItemClickListener(){
@@ -302,6 +349,21 @@ public class MainActivity extends Activity
 				apkicon.setImageDrawable(drawable);
 				mainScro.scrollTo(0,0);
 					pd.dismiss();
+					Intent i=getIntent();
+
+					Uri u=	i.getData();
+
+					if(u!=null && (!isStop)){
+						isStop = true;
+					if(isStart)
+					start.performClick();
+					else
+						btn_package.performClick();
+					//System.exit(0);
+					//Toast.makeText(MainActivity.this,"启动中",0).show();
+					MainActivity.this.finish();
+				    }
+				
 				}
 			//文件不存在
 			if(w==2)
@@ -314,6 +376,8 @@ public class MainActivity extends Activity
 		}
 		
 	};
+	
+	//预加载apk
 	void loadApk(final String path)
 	{
 		
@@ -442,8 +506,49 @@ public class MainActivity extends Activity
 		// TODO: Implement this method
 		return super.onOptionsItemSelected(item);
 	}
+
+	@Override
+	protected void onPause()
+	{
+		// TODO: Implement this method
+		SharedPreferencesUtil prefer = new SharedPreferencesUtil(this);
+		prefer.setBoolean("isStart", check.isChecked());
+		isStop = true;
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume()
+	{
+		// TODO: Implement this method
+		
+		super.onResume();
+		PermissionsUtil.requestPermission(getApplication(), new PermissionListener() {
+				@Override
+				public void permissionGranted( String[] permissions) {
+					//toast("");
+					//onLoad();
+				}
+
+				@Override
+				public void permissionDenied( String[] permissions) {
+					//Toast.makeText(MainActivity.this, "用户拒绝了访问摄像头", Toast.LENGTH_LONG).show();
+				}
+			}, android.Manifest.permission.READ_PHONE_STATE, android.Manifest.permission.READ_EXTERNAL_STORAGE,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+		
+		if(isStop){
+		Intent i=getIntent();
+
+		Uri u=	i.getData();
+
+		if(u!=null && isStart){
+			System.exit(0);
+			}
+		}
+	}
 		
 		
+    
 		
 	
 	

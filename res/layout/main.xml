@@ -78,6 +78,19 @@
 
 			</LinearLayout>
 
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="安装运行"
+					android:id="@+id/btn_package"/>
+
+			</LinearLayout>
+
 		</LinearLayout>
 
 		<LinearLayout
@@ -116,6 +129,12 @@
 			</LinearLayout>
 
 		</LinearLayout>
+
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="在调用模式下直接启动"
+			android:id="@+id/isStart"/>
 
 		<ListView
 			android:layout_height="wrap_content"

@@ -34,6 +34,9 @@ import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
+import android.os.*;
+import android.graphics.*;
+import android.content.pm.*;
 
 /**
  * Customer PackageManager
@@ -46,6 +49,98 @@ import android.graphics.drawable.Drawable;
  */
 public class PluginPackageManager extends PackageManager
 {
+//XLDEBUG 实现抽象方法？
+	@Override
+	public Intent getLeanbackLaunchIntentForPackage(String p1)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public int[] getPackageGids(String p1, int p2) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public int getPackageUid(String p1, int p2) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return 0;
+	}
+
+	@Override
+	public boolean isPermissionRevokedByPolicy(String p1, String p2)
+	{
+		// TODO: Implement this method
+		return false;
+	}
+
+	@Override
+	public boolean hasSystemFeature(String p1, int p2)
+	{
+		// TODO: Implement this method
+		return false;
+	}
+
+	@Override
+	public Drawable getActivityBanner(ComponentName p1) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public Drawable getActivityBanner(Intent p1) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public Drawable getApplicationBanner(ApplicationInfo p1)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public Drawable getApplicationBanner(String p1) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public Drawable getUserBadgedIcon(Drawable p1, UserHandle p2)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public Drawable getUserBadgedDrawableForDensity(Drawable p1, UserHandle p2, Rect p3, int p4)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public CharSequence getUserBadgedLabel(CharSequence p1, UserHandle p2)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public PackageInstaller getPackageInstaller()
+	{
+		// TODO: Implement this method
+		return null;
+	}
+	/////////
 
 	@Override
 	public List<PackageInfo> getPackagesHoldingPermissions(String[] p1, int p2)

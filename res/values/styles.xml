@@ -32,4 +32,11 @@
 
 		<item name="android:listViewStyle">@style/flist</item>
 		</style>
+		
+	<style name="GrantorNoDisplay" parent="@android:style/Theme.Holo.Light.NoActionBar"> >
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+	
 </resources>
