@@ -1,13 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center"
-    android:orientation="vertical" >
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:id="@+id/mainScrollView1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
 
-</LinearLayout>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:id="@+id/mainLinearLayout1">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_height="100dp"
+					android:layout_width="100dp"
+					android:src="@drawable/ic_launcher"
+					android:id="@+id/main_icon"/>
+
+				<TextView
+					android:layout_height="match_parent"
+					android:text="请选择Apk文件"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_width="match_parent"
+					android:id="@+id/main_name"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="SD卡"
+					android:layout_width="wrap_content"
+					android:id="@+id/main_sd"
+					android:layout_weight="1.0"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="搜索"
+					android:layout_width="wrap_content"
+					android:id="@+id/main_searchtitle"
+					android:layout_weight="1.0"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="直接启动"
+					android:layout_width="wrap_content"
+					android:id="@+id/main_start"
+					android:layout_weight="1.0"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="选择启动"
+					android:layout_width="wrap_content"
+					android:id="@+id/main_startwithactivity"
+					android:layout_weight="1.0"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:id="@+id/mainLinearLayout2"
+			android:visibility="invisible">
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:layout_width="match_parent"
+				android:hint="输入搜索路径"
+				android:id="@+id/main_searchpath"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="搜索"
+					android:layout_width="wrap_content"
+					android:layout_weight="0.5"
+					android:id="@+id/main_search"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="选择搜索目录"
+					android:layout_width="wrap_content"
+					android:layout_weight="0.5"
+					android:id="@+id/main_choosepath"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<ListView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/main_searchresult"/>
+
+	</LinearLayout>
+
+</ScrollView>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#E8E1E2">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Large Text"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:id="@+id/fc_title"
+		android:textColor="#000000"/>
+
+	<TextView
+		android:id="@+id/fc_msg"
+		android:layout_height="wrap_content"
+		android:text="Medium Text"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/fc_title"
+		android:textColor="#F31D0F"
+		android:textSize="28sp"/>
+
+	<Button
+		android:layout_below="@id/fc_msg"
+		android:layout_height="wrap_content"
+		android:text="上级目录"
+		android:layout_width="match_parent"
+		android:id="@+id/fc_up"/>
+
+	<ListView
+		android:layout_below="@id/fc_up"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:id="@+id/fc_list"
+		android:minHeight="300dp"/>
+
+</RelativeLayout>
+
