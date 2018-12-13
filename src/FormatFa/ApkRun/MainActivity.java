@@ -213,16 +213,34 @@ public class MainActivity extends Activity
 		
 			
 			Intent i=getIntent();
-		
+		boolean loaded = false;
 			Uri u=	i.getData();
-		
+		String log="";
 			if(u!=null){
-			
-			loadApk(u.getPath());
-			Toast.makeText(this,"加载apk",0).show();
+				//SharedPreferencesUtil prefer = new SharedPreferencesUtil(this);
+			String guolv = prefer.getString("guolv","");
+            String items[] = guolv.split("\\|");
+            
+            for(String item:items){
+				Toast.makeText(this,item,0).show();
+				log+=item+"\n";
+                    if(u.getPath().indexOf(item)>=0){
+						log+="运行\n";
+                        AppTool.installApk(this,u.getPath());
+                        loaded   = true;
+						finish();
+                    }
+                        
+            }
+				
+if(!loaded){
+	log+="直接运行\n";
+	loadApk(u.getPath());
+	
+			//Toast.makeText(this,"加载apk",0).show();
 			}
-			
-			
+			}
+	apkname.setText(log);
 		searchResult.setOnItemClickListener(new OnItemClickListener(){
 
 				@Override
@@ -454,6 +472,18 @@ public class MainActivity extends Activity
 			// TODO: Implement this method
 			super.handleMessage(msg);
 		}};
+		
+		
+	//加载布局成view
+	public static View getView(Context context,int id)
+	{
+		LayoutInflater factory =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		//LayoutInflater factory = LayoutInflater.from(context);
+		return  factory.inflate(id, null);
+	}
+	
+		
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -461,7 +491,7 @@ public class MainActivity extends Activity
 		menu.add(1,1,1,"关于");
 		menu.add(2,2,2,"支持^_^");
 		menu.add(3,3,3,"清理缓存");
-		//menu.add(4,4,4,"设置");
+		menu.add(4,4,4,"关键字过滤");
 		// TODO: Implement this method
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -500,6 +530,39 @@ public class MainActivity extends Activity
 					}
 				}).start();
 			
+		}
+		if(item.getItemId() == 4){
+			View layout = getView(this,R.layout.dlg_guolv);
+			final EditText edit = (EditText) layout.findViewById(R.id.dlg_edit);
+			SharedPreferencesUtil prefer = new SharedPreferencesUtil(MainActivity.this);
+            edit.setText( prefer.getString("guolv",""));
+			new AlertDialog.Builder(this)
+				.setTitle("过滤")
+				.setView(layout)
+				.setPositiveButton("确定", new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialogInterface, int n) {
+
+						SharedPreferencesUtil prefer = new SharedPreferencesUtil(MainActivity.this);
+						prefer.setString("guolv", edit.getText().toString());
+					}
+				})
+
+				.setNegativeButton("取消", new DialogInterface.OnClickListener()
+				{
+
+					@Override
+					public void onClick(DialogInterface p1, int p2)
+					{
+						// TODO: Implement this method
+						
+					}
+
+
+				})
+				.setCancelable(false)
+				.show();
 		}
 		
 		

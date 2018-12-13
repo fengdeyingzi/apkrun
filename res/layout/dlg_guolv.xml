@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="设置过滤关键字，包含关键字的APP将使用系统安装，从而避免一些无法正常启动的APP，多个用|分隔"
+		android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+	<EditText
+		android:layout_width="match_parent"
+		android:ems="10"
+		android:layout_height="wrap_content"
+		android:id="@+id/dlg_edit"/>
+
+</LinearLayout>
+

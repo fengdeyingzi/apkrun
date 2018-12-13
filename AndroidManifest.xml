@@ -1,81 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="FormatFa.ApkRun"
-    android:versionCode="2"
-    android:versionName="1.2" >
-
-    <uses-sdk 
-        android:minSdkVersion="8" 
-        android:targetSdkVersion="26" />
-
-    <application
-        android:icon="@drawable/ic_launcher"
+<?xml version='1.0' encoding='utf-8'?>
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="FormatFa.ApkRun"
+	android:versionCode="2"
+	android:versionName="1.2">
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission android:name="android.permission.GET_TASKS"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+	<uses-permission android:name="android.permission.READ_CONTACTS"/>
+	<uses-permission android:name="android.permission.READ_SMS"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+	<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+	<uses-permission android:name="com.tencent.mm.location.permission.SEND_VIEW"/>
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+	<uses-permission android:name="android.permission.READ_PROFILE"/>
+	<uses-permission android:name="com.tencent.mm.ext.permission.READ"/>
+	<uses-permission android:name="com.tencent.mm.ext.permission.WRITE"/>
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+	<uses-permission android:name="com.tencent.mm.permission.C2D_MESSAGE"/>
+	<uses-permission android:name="com.android.vending.BILLING"/>
+	<uses-permission android:name="android.permission.NFC"/>
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+	<uses-permission android:name="android.permission.BATTERY_STATS"/>
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+	<uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+	<uses-permission android:name="android.permission.INSTALL_LOCATION_PROVIDER"/>
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.READ_CALENDAR"/>
+	<uses-permission android:name="android.permission.READ_FRAME_BUFFER"/>
+	<uses-permission android:name="android.permission.REBOOT"/>
+	<uses-permission android:name="android.permission.SEND_SMS"/>
+	<uses-permission android:name="android.permission.SET_TIME_ZONE"/>
+	<uses-sdk
+		android:minSdkVersion="8"
+		android:targetSdkVersion="26"/>
+	<application
+		android:icon="@drawable/ic_launcher"
 		android:theme="@style/f"
-        android:label="@string/app_name" >
-		<activity android:name="androidx.pluginmgr.PluginActivity" /> 
-		
-		
-        <activity
-            android:label="@string/app_name"
-            android:name=".MainActivity" 
-			android:configChanges="orientation|screenSize"
-			>
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-			<intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="android.intent.action.INSTALL_PACKAGE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="application/apk"/>
-            </intent-filter>
-			
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="android.intent.action.INSTALL_PACKAGE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="file"/>
-                <data android:mimeType="application/vnd.android.package-archive"/>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.INSTALL_PACKAGE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="file"/>
-                <data android:scheme="package"/>
-            </intent-filter>
-        </activity>
-
-
-        <activity
-            android:name="com.jfpush.JDActivity"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:label=""
-            android:taskAffinity=".jfptask" />
-        <activity
-            android:name="com.jfpush.JLActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:label="" />
-        <activity
-            android:name="com.jfpush.JHActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:label="" />
-		
-		<!-- 申请权限activity -->
+		android:label="@string/app_name">
+		<activity android:name="androidx.pluginmgr.PluginActivity"/>
 		<activity
-            android:name="com.github.dfqin.grantor.PermissionActivity"
-            android:theme="@style/GrantorNoDisplay"
-		/>
-        <service android:name="com.jfpush.JService" />
-
-		<!-- 文件共享 -->
+			android:label="@string/app_name"
+			android:name=".MainActivity"
+			android:configChanges="orientation|screenSize">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<action android:name="android.intent.action.INSTALL_PACKAGE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:scheme="file"/>
+				<data android:mimeType="application/apk"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<action android:name="android.intent.action.INSTALL_PACKAGE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:scheme="file"/>
+				<data android:mimeType="application/vnd.android.package-archive"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.INSTALL_PACKAGE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:scheme="file"/>
+				<data android:scheme="package"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.jfpush.JDActivity"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:label=""
+			android:taskAffinity=".jfptask"/>
+		<activity
+			android:name="com.jfpush.JLActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:label=""/>
+		<activity
+			android:name="com.jfpush.JHActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden"
+			android:excludeFromRecents="true"
+			android:exported="true"
+			android:label=""/>
+		<activity
+			android:name="com.github.dfqin.grantor.PermissionActivity"
+			android:theme="@style/GrantorNoDisplay"/>
+		<service android:name="com.jfpush.JService"/>
 		<provider
 			android:name="android.support.v4.content.FileProvider"
 			android:authorities="FormatFa.ApkRun.fileprovider"
@@ -83,115 +124,43 @@
 			android:grantUriPermissions="true">
 			<meta-data
 				android:name="android.support.FILE_PROVIDER_PATHS"
-				android:resource="@xml/apk_paths" />
+				android:resource="@xml/apk_paths"/>
 		</provider>
-		<!-- 适配全面屏 -->
-		<meta-data android:name="android.max_aspect" android:value="2.1"/>
-    </application>
-	<uses-feature android:name="android.hardware.camera" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.bluetooth" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.location" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.location.gps" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.location.network" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.microphone" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.telephony" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.touchscreen" android:required="false">
-	</uses-feature>
-	<uses-feature android:name="android.hardware.wifi" android:required="false">
-	</uses-feature>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
-	</uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
-	</uses-permission>
-	<uses-permission android:name="android.permission.CAMERA">
-	</uses-permission>
-	<uses-permission android:name="android.permission.GET_TASKS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.INTERNET">
-	</uses-permission>
-	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED">
-	</uses-permission>
-	<uses-permission android:name="android.permission.RECORD_AUDIO">
-	</uses-permission>
-	<uses-permission android:name="android.permission.READ_CONTACTS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.READ_SMS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.VIBRATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.WAKE_LOCK">
-	</uses-permission>
-	<uses-permission android:name="android.permission.WRITE_CONTACTS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.WRITE_SETTINGS">
-	</uses-permission>
-	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT">
-	</uses-permission>
-	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT">
-	</uses-permission>
-	<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS">
-	</uses-permission>
-	<uses-permission android:name="com.tencent.mm.location.permission.SEND_VIEW">
-	</uses-permission>
-	<uses-permission android:name="android.permission.BLUETOOTH">
-	</uses-permission>
-	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN">
-	</uses-permission>
-	<uses-permission android:name="android.permission.BROADCAST_STICKY">
-	</uses-permission>
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW">
-	</uses-permission>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.GET_PACKAGE_SIZE">
-	</uses-permission>
-
-
-
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-		
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.READ_PHONE_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.GET_ACCOUNTS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS">
-	</uses-permission>
-	<uses-permission android:name="android.permission.READ_PROFILE">
-	</uses-permission>
-	<uses-feature android:name="android.hardware.bluetooth_le" android:required="false">
-	</uses-feature>
-	<uses-permission android:name="com.tencent.mm.ext.permission.READ">
-	</uses-permission>
-	<uses-permission android:name="com.tencent.mm.ext.permission.WRITE">
-	</uses-permission>
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE">
-	</uses-permission>
-	<uses-permission android:name="com.tencent.mm.permission.C2D_MESSAGE">
-	</uses-permission>
-	<uses-permission android:name="com.android.vending.BILLING">
-	</uses-permission>
-	<uses-permission android:name="android.permission.NFC" />
-	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+		<meta-data
+			android:name="android.max_aspect"
+			android:value="2.1"/>
+	</application>
+	<uses-feature
+		android:name="android.hardware.camera"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.camera.autofocus"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.bluetooth"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.location"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.location.gps"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.location.network"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.microphone"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.telephony"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.touchscreen"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.wifi"
+		android:required="false"/>
+	<uses-feature
+		android:name="android.hardware.bluetooth_le"
+		android:required="false"/>
 </manifest>

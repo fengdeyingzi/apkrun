@@ -49,6 +49,75 @@ import android.content.pm.*;
  */
 public class PluginPackageManager extends PackageManager
 {
+/*
+	@Override
+	public PackageInfo getPackageInfo(VersionedPackage p1, int p2) throws PackageManager.NameNotFoundException
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public boolean isInstantApp()
+	{
+		// TODO: Implement this method
+		return false;
+	}
+
+	@Override
+	public boolean isInstantApp(String p1)
+	{
+		// TODO: Implement this method
+		return false;
+	}
+
+	@Override
+	public int getInstantAppCookieMaxBytes()
+	{
+		// TODO: Implement this method
+		return 0;
+	}
+
+	@Override
+	public byte[] getInstantAppCookie()
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public void clearInstantAppCookie()
+	{
+		// TODO: Implement this method
+	}
+
+	@Override
+	public void updateInstantAppCookie(byte[] p1)
+	{
+		// TODO: Implement this method
+	}
+
+	@Override
+	public List<SharedLibraryInfo> getSharedLibraries(int p1)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public ChangedPackages getChangedPackages(int p1)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public void setApplicationCategoryHint(String p1, int p2)
+	{
+		// TODO: Implement this method
+	}
+*/
+
 //XLDEBUG 实现抽象方法？
 	@Override
 	public Intent getLeanbackLaunchIntentForPackage(String p1)

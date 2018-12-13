@@ -94,12 +94,15 @@ class PluginManifestUtil {
 				}
 				int sp = name.indexOf('/', 4);
 				String en2add;
-				if (sp > 0) {
+				//if (sp > 0) 
+				{
 					String osArch = name.substring(4, sp);
 					en2add=osArch.toLowerCase();
-				} else {
+				}
+				/*else {
 					en2add=defaultArch;
 				}
+				*/
 				List<ZipEntry> ents = archLibEntries.get(en2add);
 				if (ents == null) {
 					ents = new LinkedList<ZipEntry>();
